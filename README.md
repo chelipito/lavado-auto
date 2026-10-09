@@ -1,11 +1,11 @@
-# Lavado Express — bosquejo
+# Alta Vista Carwash — app de reservas (demo)
 
 App web para una pyme de lavado de autos con dos vistas:
 
 - **Cliente** (`cliente.html`): servicios y precios por tipo de vehículo, reserva de hora con disponibilidad, consulta de estado por patente.
 - **Dueño** (`dueno.html`): KPIs del día, agenda con cambio de estado (Pendiente → En proceso → Listo → Entregado), aviso por WhatsApp y resumen de servicios.
 
-> Precios, datos del negocio y reservas son **de ejemplo**.
+> Nombre, dirección, servicios y precios tomados del afiche del local. Teléfono, WhatsApp, horario, duraciones y reservas son **de ejemplo**.
 
 ## ¿Qué archivo edito?
 

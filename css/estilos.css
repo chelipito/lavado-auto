@@ -199,7 +199,7 @@ footer { padding: 32px 0; color: var(--texto-2); font-size: .9rem; text-align: c
   .opcion { flex-direction: column; align-items: flex-start; }
 }
 @media (min-width: 960px) {
-  .grilla.servicios { grid-template-columns: repeat(4, 1fr); }
+  .grilla.servicios { grid-template-columns: repeat(3, 1fr); }
   .kpis { grid-template-columns: repeat(4, 1fr); }
   .panel-columnas { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start; }
   .reserva-columnas { display: grid; grid-template-columns: 3fr 2fr; gap: 24px; align-items: start; }

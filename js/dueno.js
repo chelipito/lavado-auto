@@ -122,11 +122,12 @@
       : '<p class="texto-2" style="margin:0">Sin servicios este día.</p>';
   }
 
+  // Vehículos en filas y servicios en columnas (igual que el afiche del local).
   function pintarPrecios() {
     const tipos = negocio.tiposVehiculo;
     $('#tabla-precios').innerHTML = `
-      <thead><tr><th>Servicio</th>${tipos.map(t => `<th class="num">${esc(t.nombre)}</th>`).join('')}</tr></thead>
-      <tbody>${servicios.map(s => `<tr><td>${esc(s.nombre)}</td>${tipos.map(t => `<td class="num">${Datos.dinero(s.precios[t.id])}</td>`).join('')}</tr>`).join('')}</tbody>`;
+      <thead><tr><th>Vehículo</th>${servicios.map(s => `<th class="num">${esc(s.nombre.replace(/^Lavado /, ''))}</th>`).join('')}</tr></thead>
+      <tbody>${tipos.map(t => `<tr><td>${esc(t.nombre)}</td>${servicios.map(s => `<td class="num">${Datos.dinero(s.precios[t.id])}</td>`).join('')}</tr>`).join('')}</tbody>`;
   }
 
   function pintar() {

@@ -1,7 +1,7 @@
 {
-  "nombre": "Lavado Express",
-  "eslogan": "Tu auto impecable, sin esperas",
-  "direccion": "Av. Ejemplo 1234, Santiago",
+  "nombre": "Alta Vista Carwash",
+  "eslogan": "Cuidado en cada detalle",
+  "direccion": "Santa Guillermina 1459",
   "telefono": "+56 9 0000 0000",
   "whatsapp": "56900000000",
   "horario": {
@@ -13,8 +13,11 @@
   },
   "capacidadSimultanea": 2,
   "tiposVehiculo": [
-    { "id": "auto", "nombre": "Auto / Sedán" },
+    { "id": "auto", "nombre": "Auto" },
     { "id": "suv", "nombre": "SUV" },
-    { "id": "camioneta", "nombre": "Camioneta" }
+    { "id": "camioneta-1c", "nombre": "Camioneta 1 cabina" },
+    { "id": "camioneta-2c", "nombre": "Camioneta 2 cabinas / Jeep" },
+    { "id": "camioneta-barra", "nombre": "Camioneta con barra" },
+    { "id": "van", "nombre": "Van / Furgón / 3 corridas" }
   ]
 }
