@@ -1,11 +1,11 @@
 [
-  { "id": "D01", "dia": 0, "hora": "09:00", "servicioId": "completo", "vehiculo": "auto", "cliente": "Cliente Demo 1", "telefono": "56900000001", "patente": "ABCD12", "precio": 12000, "estado": "entregado" },
-  { "id": "D02", "dia": 0, "hora": "09:30", "servicioId": "exterior", "vehiculo": "suv", "cliente": "Cliente Demo 2", "telefono": "56900000002", "patente": "BCDF34", "precio": 10000, "estado": "listo" },
-  { "id": "D03", "dia": 0, "hora": "10:30", "servicioId": "premium", "vehiculo": "camioneta", "cliente": "Cliente Demo 3", "telefono": "56900000003", "patente": "CDFG56", "precio": 28000, "estado": "en-proceso" },
-  { "id": "D04", "dia": 0, "hora": "12:00", "servicioId": "completo", "vehiculo": "suv", "cliente": "Cliente Demo 4", "telefono": "56900000004", "patente": "DFGH78", "precio": 15000, "estado": "pendiente" },
-  { "id": "D05", "dia": 0, "hora": "14:00", "servicioId": "tapiz", "vehiculo": "auto", "cliente": "Cliente Demo 5", "telefono": "56900000005", "patente": "FGHJ90", "precio": 35000, "estado": "pendiente" },
-  { "id": "D06", "dia": 0, "hora": "16:30", "servicioId": "exterior", "vehiculo": "auto", "cliente": "Cliente Demo 6", "telefono": "56900000006", "patente": "GHJK11", "precio": 8000, "estado": "cancelada" },
-  { "id": "D07", "dia": -1, "hora": "11:00", "servicioId": "completo", "vehiculo": "auto", "cliente": "Cliente Demo 7", "telefono": "56900000007", "patente": "HJKL22", "precio": 12000, "estado": "entregado" },
-  { "id": "D08", "dia": -1, "hora": "15:00", "servicioId": "premium", "vehiculo": "suv", "cliente": "Cliente Demo 8", "telefono": "56900000008", "patente": "JKLP33", "precio": 25000, "estado": "entregado" },
-  { "id": "D09", "dia": 1, "hora": "10:00", "servicioId": "completo", "vehiculo": "camioneta", "cliente": "Cliente Demo 9", "telefono": "56900000009", "patente": "KLPR44", "precio": 18000, "estado": "pendiente" }
+  { "id": "D01", "dia": 0, "hora": "09:00", "servicioId": "completo", "vehiculo": "auto", "cliente": "Camila Rojas", "telefono": "56900000001", "patente": "ABCD12", "precio": 12000, "estado": "entregado" },
+  { "id": "D02", "dia": 0, "hora": "09:30", "servicioId": "exterior", "vehiculo": "suv", "cliente": "Matías González", "telefono": "56900000002", "patente": "BCDF34", "precio": 10000, "estado": "listo" },
+  { "id": "D03", "dia": 0, "hora": "10:30", "servicioId": "premium", "vehiculo": "camioneta", "cliente": "Javiera Muñoz", "telefono": "56900000003", "patente": "CDFG56", "precio": 28000, "estado": "en-proceso" },
+  { "id": "D04", "dia": 0, "hora": "12:00", "servicioId": "completo", "vehiculo": "suv", "cliente": "Diego Soto", "telefono": "56900000004", "patente": "DFGH78", "precio": 15000, "estado": "pendiente" },
+  { "id": "D05", "dia": 0, "hora": "14:00", "servicioId": "tapiz", "vehiculo": "auto", "cliente": "Francisca Díaz", "telefono": "56900000005", "patente": "FGHJ90", "precio": 35000, "estado": "pendiente" },
+  { "id": "D06", "dia": 0, "hora": "16:30", "servicioId": "exterior", "vehiculo": "auto", "cliente": "Tomás Pérez", "telefono": "56900000006", "patente": "GHJK11", "precio": 8000, "estado": "cancelada" },
+  { "id": "D07", "dia": -1, "hora": "11:00", "servicioId": "completo", "vehiculo": "auto", "cliente": "Valentina Torres", "telefono": "56900000007", "patente": "HJKL22", "precio": 12000, "estado": "entregado" },
+  { "id": "D08", "dia": -1, "hora": "15:00", "servicioId": "premium", "vehiculo": "suv", "cliente": "Benjamín Araya", "telefono": "56900000008", "patente": "JKLP33", "precio": 25000, "estado": "entregado" },
+  { "id": "D09", "dia": 1, "hora": "10:00", "servicioId": "completo", "vehiculo": "camioneta", "cliente": "Isidora Flores", "telefono": "56900000009", "patente": "KLPR44", "precio": 18000, "estado": "pendiente" }
 ]

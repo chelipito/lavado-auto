@@ -141,6 +141,14 @@
     pintarMix(lista);
   }
 
+  $('#reiniciar-demo').addEventListener('click', async () => {
+    if (!confirm('¿Borrar las reservas de prueba y volver a los datos de ejemplo?')) return;
+    Datos.reiniciarDemo();
+    estado.reservas = await Datos.reservas();
+    estado.filtro = 'todos';
+    pintar();
+  });
+
   pintarPrecios();
   pintar();
 })();

@@ -88,6 +88,11 @@ const Datos = (() => {
     guardarLocal(CLAVE_ESTADOS, estados);
   }
 
+  // Borra reservas y cambios de estado guardados en este navegador (útil antes de una demostración).
+  function reiniciarDemo() {
+    try { localStorage.removeItem(CLAVE_RESERVAS); localStorage.removeItem(CLAVE_ESTADOS); } catch { /* sin acceso */ }
+  }
+
   // ---- Disponibilidad ----
   // Un horario está libre si, durante toda la duración del servicio, hay menos autos que la capacidad del local.
   function horariosDisponibles({ negocio, servicios, reservas, fecha, duracionMin }) {
@@ -113,5 +118,5 @@ const Datos = (() => {
     return libres;
   }
 
-  return { ESTADOS, negocio, servicios, reservas, crearReserva, cambiarEstado, horariosDisponibles, fechaISO, dinero, escapar };
+  return { ESTADOS, negocio, servicios, reservas, crearReserva, cambiarEstado, reiniciarDemo, horariosDisponibles, fechaISO, dinero, escapar };
 })();
