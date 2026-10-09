@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lavado Express</title>
+  <meta name="description" content="Reserva tu lavado de auto o gestiona tu negocio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <main class="portada">
+    <div class="portada-caja">
+      <svg class="icono" aria-hidden="true" style="width:48px;height:48px;color:var(--agua)"><use href="#i-gota"></use></svg>
+      <h1 id="nombre-negocio">Lavado Express</h1>
+      <p>Elige cómo quieres entrar</p>
+
+      <div class="opciones">
+        <a class="tarjeta opcion" href="cliente.html">
+          <span class="icono-grande"><svg class="icono" aria-hidden="true"><use href="#i-auto"></use></svg></span>
+          <span>
+            <h2>Soy cliente</h2>
+            <p>Ver servicios, precios y reservar hora.</p>
+          </span>
+        </a>
+        <a class="tarjeta opcion" href="dueno.html">
+          <span class="icono-grande"><svg class="icono" aria-hidden="true"><use href="#i-grafico"></use></svg></span>
+          <span>
+            <h2>Soy el dueño</h2>
+            <p>Agenda del día, estados e ingresos.</p>
+          </span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/iconos.js"></script>
+  <script src="js/datos.js"></script>
+  <script>
+    // El nombre del negocio se toma de data/negocio.json
+    Datos.negocio().then(n => {
+      document.getElementById('nombre-negocio').textContent = n.nombre;
+      document.title = n.nombre;
+    }).catch(() => {});
+  </script>
+</body>
+</html>

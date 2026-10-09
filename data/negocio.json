@@ -1,0 +1,20 @@
+{
+  "nombre": "Lavado Express",
+  "eslogan": "Tu auto impecable, sin esperas",
+  "direccion": "Av. Ejemplo 1234, Santiago",
+  "telefono": "+56 9 0000 0000",
+  "whatsapp": "56900000000",
+  "horario": {
+    "apertura": "09:00",
+    "cierre": "19:00",
+    "intervaloMin": 30,
+    "diasCerrado": [0],
+    "texto": "Lunes a sábado, 09:00 a 19:00"
+  },
+  "capacidadSimultanea": 2,
+  "tiposVehiculo": [
+    { "id": "auto", "nombre": "Auto / Sedán" },
+    { "id": "suv", "nombre": "SUV" },
+    { "id": "camioneta", "nombre": "Camioneta" }
+  ]
+}

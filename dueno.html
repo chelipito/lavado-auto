@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel del dueño</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="header">
+    <div class="contenedor">
+      <a class="marca" href="index.html">
+        <svg class="icono" aria-hidden="true"><use href="#i-gota"></use></svg>
+        <span><span data-negocio="nombre">Lavado</span> · Panel</span>
+      </a>
+      <a class="btn btn-claro btn-sm" href="cliente.html">Ver como cliente</a>
+    </div>
+  </header>
+
+  <main class="contenedor seccion">
+    <div class="aviso" style="margin-bottom:20px">
+      <svg class="icono" aria-hidden="true"><use href="#i-info"></use></svg>
+      <span>Bosquejo sin inicio de sesión. Las reservas son de ejemplo o creadas en este navegador; aún no hay base de datos.</span>
+    </div>
+
+    <!-- Selector de fecha -->
+    <div class="barra-fecha">
+      <button type="button" class="btn btn-secundario btn-icono" id="dia-anterior" aria-label="Día anterior">
+        <svg class="icono" aria-hidden="true"><use href="#i-izquierda"></use></svg>
+      </button>
+      <label class="sr-only" for="fecha">Fecha</label>
+      <input type="date" id="fecha">
+      <button type="button" class="btn btn-secundario btn-icono" id="dia-siguiente" aria-label="Día siguiente">
+        <svg class="icono" aria-hidden="true"><use href="#i-derecha"></use></svg>
+      </button>
+      <button type="button" class="btn btn-secundario btn-sm" id="ir-hoy">Hoy</button>
+      <h1 id="titulo-dia" style="font-size:1.4rem;margin:0 0 0 4px"></h1>
+    </div>
+
+    <!-- KPIs -->
+    <section class="kpis" aria-label="Indicadores del día" id="kpis"></section>
+
+    <div class="panel-columnas">
+      <!-- Agenda -->
+      <section aria-labelledby="titulo-agenda">
+        <h2 id="titulo-agenda">Agenda</h2>
+        <div class="segmentado" id="filtro-estado" role="group" aria-label="Filtrar por estado"></div>
+        <ul class="agenda" id="agenda" aria-live="polite"></ul>
+      </section>
+
+      <!-- Columna lateral -->
+      <div class="grilla">
+        <section class="tarjeta" aria-labelledby="titulo-mix">
+          <h3 id="titulo-mix">Servicios del día</h3>
+          <div class="barras" id="mix-servicios"></div>
+        </section>
+
+        <section class="tarjeta" aria-labelledby="titulo-precios">
+          <h3 id="titulo-precios">Lista de precios</h3>
+          <div class="tabla-scroll"><table id="tabla-precios"></table></div>
+          <p class="texto-2" style="margin:12px 0 0;font-size:.85rem">Se editan en <code>data/servicios.json</code>.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/iconos.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/dueno.js"></script>
+</body>
+</html>

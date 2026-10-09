@@ -1,0 +1,31 @@
+[
+  {
+    "id": "exterior",
+    "nombre": "Lavado exterior",
+    "descripcion": "Carrocería, llantas y secado a mano.",
+    "duracionMin": 30,
+    "precios": { "auto": 8000, "suv": 10000, "camioneta": 12000 }
+  },
+  {
+    "id": "completo",
+    "nombre": "Lavado completo",
+    "descripcion": "Exterior + aspirado, tablero y vidrios interiores.",
+    "duracionMin": 60,
+    "destacado": true,
+    "precios": { "auto": 12000, "suv": 15000, "camioneta": 18000 }
+  },
+  {
+    "id": "premium",
+    "nombre": "Premium + cera",
+    "descripcion": "Lavado completo, encerado protector y brillo de neumáticos.",
+    "duracionMin": 90,
+    "precios": { "auto": 20000, "suv": 25000, "camioneta": 28000 }
+  },
+  {
+    "id": "tapiz",
+    "nombre": "Limpieza de tapiz",
+    "descripcion": "Lavado profundo de asientos y alfombras.",
+    "duracionMin": 120,
+    "precios": { "auto": 35000, "suv": 40000, "camioneta": 45000 }
+  }
+]
