@@ -51,6 +51,19 @@
     <!-- KPIs -->
     <section class="kpis" aria-label="Indicadores del día" id="kpis"></section>
 
+    <!-- Ranking de servicios -->
+    <section class="tarjeta ranking" aria-labelledby="titulo-ranking">
+      <div class="ranking-cabecera">
+        <h2 id="titulo-ranking" style="font-size:1.2rem;margin:0">¿Qué se vende más?</h2>
+        <div class="segmentado segmentado-sm" id="periodo-ranking" role="group" aria-label="Período">
+          <button type="button" data-periodo="1" aria-pressed="true">Este día</button>
+          <button type="button" data-periodo="7" aria-pressed="false">Últimos 7 días</button>
+        </div>
+      </div>
+      <ol class="ranking-lista" id="ranking"></ol>
+      <p class="texto-2 ranking-nota" id="ranking-nota"></p>
+    </section>
+
     <div class="panel-columnas">
       <!-- Agenda -->
       <section aria-labelledby="titulo-agenda">
@@ -61,11 +74,6 @@
 
       <!-- Columna lateral -->
       <div class="grilla">
-        <section class="tarjeta" aria-labelledby="titulo-mix">
-          <h3 id="titulo-mix">Servicios del día</h3>
-          <div class="barras" id="mix-servicios"></div>
-        </section>
-
         <section class="tarjeta" aria-labelledby="titulo-precios">
           <h3 id="titulo-precios">Lista de precios</h3>
           <div class="tabla-scroll"><table id="tabla-precios"></table></div>

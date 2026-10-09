@@ -43,7 +43,7 @@ svg.icono { width: 20px; height: 20px; flex-shrink: 0; stroke: currentColor; fil
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .contenedor { width: 100%; max-width: var(--ancho); margin: 0 auto; padding: 0 16px; }
-.seccion { padding: 40px 0; }
+.seccion { padding-top: 40px; padding-bottom: 40px; } /* solo vertical: respeta el margen lateral de .contenedor */
 .texto-2 { color: var(--texto-2); }
 
 /* ===== Header ===== */
@@ -79,6 +79,7 @@ svg.icono { width: 20px; height: 20px; flex-shrink: 0; stroke: currentColor; fil
 /* ===== Tarjetas ===== */
 .tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); box-shadow: var(--sombra); padding: 20px; }
 .grilla { display: grid; gap: 16px; }
+.grilla > *, .panel-columnas > * { min-width: 0; } /* evita que tablas anchas estiren la página en el celular */
 
 /* ===== Hero (vista cliente) ===== */
 .hero { background: linear-gradient(160deg, var(--primario) 0%, #0C4A6E 100%); color: #fff; padding: 48px 0 56px; }
@@ -126,7 +127,7 @@ svg.icono { width: 20px; height: 20px; flex-shrink: 0; stroke: currentColor; fil
   background: #fff; font: 500 .95rem var(--fuente-cuerpo); cursor: pointer; color: var(--texto);
 }
 .horarios button[aria-pressed="true"] { background: var(--acento); border-color: var(--acento); color: #fff; }
-.horarios-vacio { color: var(--texto-2); font-size: .95rem; }
+.horarios-vacio { grid-column: 1 / -1; margin: 0; color: var(--texto-2); font-size: .95rem; }
 
 .resumen { background: var(--acento-suave); border-radius: var(--radio-sm); padding: 14px 16px; margin-bottom: 16px; }
 .resumen .total { font-family: var(--fuente-titulo); font-size: 1.4rem; font-weight: 700; color: var(--primario); }
@@ -162,17 +163,31 @@ svg.icono { width: 20px; height: 20px; flex-shrink: 0; stroke: currentColor; fil
 .turno-acciones { display: flex; flex-wrap: wrap; gap: 8px; }
 .turno.cancelada { opacity: .65; }
 
-.barras { display: grid; gap: 12px; }
-.barra-fila { display: grid; gap: 4px; }
-.barra-fila .cab { display: flex; justify-content: space-between; font-size: .95rem; }
-.barra-pista { height: 10px; background: #F1F5F9; border-radius: 999px; overflow: hidden; }
-.barra-relleno { height: 100%; background: var(--acento); border-radius: 999px; }
+.kpi.ancho { grid-column: span 2; }
+
+/* Ranking "¿Qué se vende más?": barras horizontales, un solo color, base a la izquierda */
+.ranking { margin-bottom: 24px; }
+.ranking-cabecera { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.segmentado-sm { margin: 0; }
+.segmentado-sm button { min-height: 40px; padding: 6px 14px; font-size: .88rem; }
+.ranking-lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+.ranking-fila { display: grid; gap: 6px; }
+.ranking-texto { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.ranking-nombre { font-weight: 500; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.ranking-valor { color: var(--texto-2); white-space: nowrap; }
+.ranking-valor strong { color: var(--texto); font-family: var(--fuente-titulo); font-size: 1.15rem; }
+.ranking-pista { height: 14px; background: #F1F5F9; border-radius: 0 4px 4px 0; }
+.ranking-barra { height: 100%; min-width: 2px; background: var(--acento); border-radius: 0 4px 4px 0; transition: width .3s ease-out; }
+.ranking-ingresos { font-size: .85rem; color: var(--texto-2); }
+.ranking-nota { font-size: .85rem; margin: 16px 0 0; }
 
 table { width: 100%; border-collapse: collapse; font-size: .95rem; }
 th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--borde); }
 th { color: var(--texto-2); font-weight: 500; }
 td.num, th.num { text-align: right; white-space: nowrap; }
 .tabla-scroll { overflow-x: auto; }
+#tabla-precios { font-size: .85rem; }
+#tabla-precios th, #tabla-precios td { padding: 8px 4px; }
 
 .vacio { text-align: center; color: var(--texto-2); padding: 32px 16px; }
 
@@ -226,7 +241,8 @@ footer { padding: 32px 0; color: var(--texto-2); font-size: .9rem; text-align: c
 }
 @media (min-width: 960px) {
   .grilla.servicios { grid-template-columns: repeat(3, 1fr); }
-  .kpis { grid-template-columns: repeat(4, 1fr); }
+  .kpis { grid-template-columns: repeat(3, 1fr); }
+  .kpi.ancho { grid-column: auto; }
   .panel-columnas { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start; }
   .reserva-columnas { display: grid; grid-template-columns: 3fr 2fr; gap: 24px; align-items: start; }
 }

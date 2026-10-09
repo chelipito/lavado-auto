@@ -38,14 +38,64 @@
     const ingresos = activas.reduce((t, r) => t + (r.precio || 0), 0);
     const enCurso = activas.filter(r => r.estado === 'pendiente' || r.estado === 'en-proceso').length;
     const kpis = [
-      ['Reservas', activas.length],
-      ['Ingresos estimados', Datos.dinero(ingresos)],
-      ['Ticket promedio', activas.length ? Datos.dinero(Math.round(ingresos / activas.length)) : '—'],
-      ['Por atender', enCurso]
+      ['Ingresos estimados', Datos.dinero(ingresos), 'ancho'],
+      ['Reservas', activas.length, ''],
+      ['Por atender', enCurso, '']
     ];
-    $('#kpis').innerHTML = kpis.map(([etq, val]) =>
-      `<div class="tarjeta kpi"><div class="etiqueta">${etq}</div><div class="valor">${val}</div></div>`).join('');
+    $('#kpis').innerHTML = kpis.map(([etq, val, clase]) =>
+      `<div class="tarjeta kpi ${clase}"><div class="etiqueta">${etq}</div><div class="valor">${val}</div></div>`).join('');
   }
+
+  // ---- Ranking: qué servicio se vende más (cantidad; ingresos como dato de apoyo) ----
+  estado.periodo = 1; // días hacia atrás desde la fecha elegida, incluyéndola
+
+  function reservasDelPeriodo() {
+    const fin = new Date(estado.fecha + 'T12:00:00');
+    const ini = new Date(fin);
+    ini.setDate(ini.getDate() - (estado.periodo - 1));
+    const desde = Datos.fechaISO(ini);
+    return estado.reservas.filter(r => r.fecha >= desde && r.fecha <= estado.fecha && r.estado !== 'cancelada');
+  }
+
+  function pintarRanking() {
+    const lista = reservasDelPeriodo();
+    const total = lista.length;
+    const filas = servicios.map(s => {
+      const delServicio = lista.filter(r => r.servicioId === s.id);
+      return { nombre: s.nombre, n: delServicio.length, ingresos: delServicio.reduce((t, r) => t + (r.precio || 0), 0) };
+    }).sort((a, b) => b.n - a.n || b.ingresos - a.ingresos);
+    const max = Math.max(1, ...filas.map(f => f.n));
+
+    if (!total) {
+      $('#ranking').innerHTML = '<li class="vacio" style="padding:16px 0">Sin ventas en este período.</li>';
+      $('#ranking-nota').textContent = '';
+      return;
+    }
+    $('#ranking').innerHTML = filas.map((f, i) => {
+      const pct = Math.round((f.n / total) * 100);
+      const lider = i === 0 && f.n > 0;
+      return `
+        <li class="ranking-fila" title="${esc(f.nombre)}: ${f.n} de ${total} lavados (${pct}%) · ${Datos.dinero(f.ingresos)}">
+          <div class="ranking-texto">
+            <span class="ranking-nombre">${esc(f.nombre)}${lider ? ' <span class="chip listo">Más vendido</span>' : ''}</span>
+            <span class="ranking-valor"><strong>${f.n}</strong> · ${pct}%</span>
+          </div>
+          <div class="ranking-pista" aria-hidden="true">
+            <div class="ranking-barra" style="width:${(f.n / max) * 100}%"></div>
+          </div>
+          <span class="ranking-ingresos">${Datos.dinero(f.ingresos)} en ventas</span>
+        </li>`;
+    }).join('');
+    $('#ranking-nota').textContent = `${total} lavados ${estado.periodo === 1 ? 'este día' : 'en los últimos 7 días'} (sin contar cancelados).`;
+  }
+
+  $('#periodo-ranking').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-periodo]');
+    if (!btn) return;
+    estado.periodo = Number(btn.dataset.periodo);
+    $('#periodo-ranking').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    pintarRanking();
+  });
 
   // ---- Agenda ----
   function pintarFiltro(lista) {
@@ -106,22 +156,6 @@
     pintar();
   });
 
-  // ---- Servicios del día ----
-  function pintarMix(lista) {
-    const activas = lista.filter(r => r.estado !== 'cancelada');
-    const conteo = servicios.map(s => ({ nombre: s.nombre, n: activas.filter(r => r.servicioId === s.id).length }))
-      .filter(x => x.n > 0)
-      .sort((a, b) => b.n - a.n);
-    const max = Math.max(1, ...conteo.map(x => x.n));
-    $('#mix-servicios').innerHTML = conteo.length
-      ? conteo.map(x => `
-          <div class="barra-fila">
-            <div class="cab"><span>${esc(x.nombre)}</span><strong>${x.n}</strong></div>
-            <div class="barra-pista" aria-hidden="true"><div class="barra-relleno" style="width:${(x.n / max) * 100}%"></div></div>
-          </div>`).join('')
-      : '<p class="texto-2" style="margin:0">Sin servicios este día.</p>';
-  }
-
   // Vehículos en filas y servicios en columnas (igual que el afiche del local).
   function pintarPrecios() {
     const tipos = negocio.tiposVehiculo;
@@ -139,7 +173,7 @@
     pintarKpis(lista);
     pintarFiltro(lista);
     pintarAgenda(lista);
-    pintarMix(lista);
+    pintarRanking();
   }
 
   $('#reiniciar-demo').addEventListener('click', async () => {
