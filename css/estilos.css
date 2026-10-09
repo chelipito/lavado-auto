@@ -176,18 +176,46 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 
 .vacio { text-align: center; color: var(--texto-2); padding: 32px 16px; }
 
-/* ===== Portada (index) ===== */
-.portada { min-height: 100vh; display: grid; place-items: center; padding: 32px 16px; background: linear-gradient(160deg, var(--primario) 0%, #0C4A6E 100%); }
-.portada-caja { width: 100%; max-width: 720px; text-align: center; color: #fff; }
-.portada-caja h1 { color: #fff; }
-.portada-caja p { color: #CBD5E1; }
-.opciones { display: grid; gap: 16px; margin-top: 28px; text-align: left; }
-.opcion { display: flex; gap: 16px; align-items: center; text-decoration: none; color: var(--texto); transition: transform .2s, box-shadow .2s; }
-.opcion:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgb(0 0 0 / .2); }
-.opcion .icono-grande { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 12px; background: var(--acento-suave); color: var(--acento); flex-shrink: 0; }
-.opcion .icono-grande svg { width: 28px; height: 28px; }
-.opcion h2 { font-size: 1.2rem; margin: 0 0 2px; }
-.opcion p { margin: 0; color: var(--texto-2); font-size: .95rem; }
+/* ===== Inicio (index): panel pensado para celular ===== */
+body.inicio { max-width: 480px; margin: 0 auto; min-height: 100vh; }
+.inicio-cabecera {
+  background: linear-gradient(160deg, var(--primario) 0%, #0C4A6E 100%); color: #fff;
+  padding: calc(24px + env(safe-area-inset-top)) 16px 56px;
+  border-radius: 0 0 28px 28px;
+}
+.inicio-marca { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.inicio-logo { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: rgb(255 255 255 / .12); color: var(--agua); flex-shrink: 0; }
+.inicio-logo svg { width: 28px; height: 28px; }
+.inicio-marca h1 { color: #fff; font-size: 1.5rem; margin: 0; }
+.inicio-marca p { color: #CBD5E1; margin: 0; font-size: .95rem; }
+.estado-local { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: .88rem; font-weight: 500; background: #FEE2E2; color: #991B1B; }
+.estado-local::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.estado-local.abierto { background: #DCFCE7; color: #166534; }
+.estado-local:empty { display: none; }
+
+.inicio-cuerpo { padding: 0 16px calc(24px + env(safe-area-inset-bottom)); margin-top: -32px; display: grid; gap: 16px; }
+.btn-grande { min-height: 60px; font-size: 1.15rem; font-weight: 600; border-radius: var(--radio); box-shadow: 0 8px 20px rgb(3 105 161 / .3); }
+.btn-grande svg { width: 24px; height: 24px; }
+.desde { text-align: center; color: var(--texto-2); margin: -4px 0 0; }
+
+.accesos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.acceso {
+  display: flex; flex-direction: column; gap: 2px; padding: 16px; min-height: 120px;
+  background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); box-shadow: var(--sombra);
+  text-decoration: none; color: var(--texto); transition: transform .15s, border-color .2s;
+}
+.acceso:active { transform: scale(.97); }
+.acceso:hover { border-color: var(--acento); }
+.acceso-icono { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--acento-suave); color: var(--acento); margin-bottom: 8px; }
+.acceso-titulo { font-family: var(--fuente-titulo); font-weight: 600; font-size: 1.05rem; color: var(--primario); }
+.acceso-sub { font-size: .85rem; color: var(--texto-2); }
+
+.info-local { display: grid; gap: 10px; padding: 16px; }
+.info-local div { display: flex; align-items: center; gap: 10px; }
+.info-local svg { color: var(--acento); }
+
+.acceso-dueno { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; color: var(--texto-2); font-size: .9rem; text-decoration: none; }
+.acceso-dueno:hover { color: var(--primario); }
 
 footer { padding: 32px 0; color: var(--texto-2); font-size: .9rem; text-align: center; }
 
@@ -195,8 +223,6 @@ footer { padding: 32px 0; color: var(--texto-2); font-size: .9rem; text-align: c
 @media (min-width: 640px) {
   .grilla.servicios { grid-template-columns: repeat(2, 1fr); }
   .fila-2 { grid-template-columns: 1fr 1fr; }
-  .opciones { grid-template-columns: 1fr 1fr; }
-  .opcion { flex-direction: column; align-items: flex-start; }
 }
 @media (min-width: 960px) {
   .grilla.servicios { grid-template-columns: repeat(3, 1fr); }

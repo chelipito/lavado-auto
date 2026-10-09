@@ -2,48 +2,69 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1E293B">
   <title>Alta Vista Carwash</title>
-  <meta name="description" content="Reserva tu lavado de auto o gestiona tu negocio.">
+  <meta name="description" content="Reserva tu lavado, revisa precios y el estado de tu auto.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
-<body>
-  <main class="portada">
-    <div class="portada-caja">
-      <svg class="icono" aria-hidden="true" style="width:48px;height:48px;color:var(--agua)"><use href="#i-gota"></use></svg>
-      <h1 id="nombre-negocio">Alta Vista Carwash</h1>
-      <p>Elige cómo quieres entrar</p>
-
-      <div class="opciones">
-        <a class="tarjeta opcion" href="cliente.html">
-          <span class="icono-grande"><svg class="icono" aria-hidden="true"><use href="#i-auto"></use></svg></span>
-          <span>
-            <h2>Soy cliente</h2>
-            <p>Ver servicios, precios y reservar hora.</p>
-          </span>
-        </a>
-        <a class="tarjeta opcion" href="dueno.html">
-          <span class="icono-grande"><svg class="icono" aria-hidden="true"><use href="#i-grafico"></use></svg></span>
-          <span>
-            <h2>Soy el dueño</h2>
-            <p>Agenda del día, estados e ingresos.</p>
-          </span>
-        </a>
+<body class="inicio">
+  <header class="inicio-cabecera">
+    <div class="inicio-marca">
+      <span class="inicio-logo"><svg class="icono" aria-hidden="true"><use href="#i-gota"></use></svg></span>
+      <div>
+        <h1 data-negocio="nombre">Alta Vista Carwash</h1>
+        <p data-negocio="eslogan"></p>
       </div>
     </div>
+    <span class="estado-local" id="estado-local" aria-live="polite"></span>
+  </header>
+
+  <main class="inicio-cuerpo">
+    <a class="btn btn-primario btn-grande" href="cliente.html#reservar">
+      <svg class="icono" aria-hidden="true"><use href="#i-calendario"></use></svg> Reservar hora
+    </a>
+    <p class="desde" id="desde"></p>
+
+    <nav class="accesos" aria-label="Accesos rápidos">
+      <a class="acceso" href="cliente.html#servicios">
+        <span class="acceso-icono"><svg class="icono" aria-hidden="true"><use href="#i-auto"></use></svg></span>
+        <span class="acceso-titulo">Precios</span>
+        <span class="acceso-sub">Según tu vehículo</span>
+      </a>
+      <a class="acceso" href="cliente.html#estado">
+        <span class="acceso-icono"><svg class="icono" aria-hidden="true"><use href="#i-buscar"></use></svg></span>
+        <span class="acceso-titulo">Mi auto</span>
+        <span class="acceso-sub">Ver estado</span>
+      </a>
+      <a class="acceso" id="acceso-whatsapp" href="#" target="_blank" rel="noopener">
+        <span class="acceso-icono"><svg class="icono" aria-hidden="true"><use href="#i-mensaje"></use></svg></span>
+        <span class="acceso-titulo">WhatsApp</span>
+        <span class="acceso-sub">Escríbenos</span>
+      </a>
+      <a class="acceso" id="acceso-mapa" href="#" target="_blank" rel="noopener">
+        <span class="acceso-icono"><svg class="icono" aria-hidden="true"><use href="#i-ubicacion"></use></svg></span>
+        <span class="acceso-titulo">Cómo llegar</span>
+        <span class="acceso-sub">Abrir mapa</span>
+      </a>
+    </nav>
+
+    <section class="tarjeta info-local" aria-label="Datos del local">
+      <div><svg class="icono" aria-hidden="true"><use href="#i-reloj"></use></svg><span data-negocio="horario"></span></div>
+      <div><svg class="icono" aria-hidden="true"><use href="#i-ubicacion"></use></svg><span data-negocio="direccion"></span></div>
+      <div><svg class="icono" aria-hidden="true"><use href="#i-telefono"></use></svg><a id="enlace-telefono" data-negocio="telefono" href="#"></a></div>
+    </section>
+
+    <a class="acceso-dueno" href="dueno.html">
+      <svg class="icono" aria-hidden="true"><use href="#i-grafico"></use></svg> Acceso dueño
+    </a>
   </main>
 
   <script src="js/iconos.js"></script>
   <script src="js/datos.js"></script>
-  <script>
-    // El nombre del negocio se toma de data/negocio.json
-    Datos.negocio().then(n => {
-      document.getElementById('nombre-negocio').textContent = n.nombre;
-      document.title = n.nombre;
-    }).catch(() => {});
-  </script>
+  <script src="js/inicio.js"></script>
 </body>
 </html>
