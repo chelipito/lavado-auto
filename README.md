@@ -19,6 +19,8 @@ App web para una pyme de lavado de autos con dos vistas:
 | Comportamiento de la vista cliente | `js/cliente.js` / `cliente.html` |
 | Comportamiento de la vista dueño | `js/dueno.js` / `dueno.html` |
 | Dónde se leen/guardan los datos (futura base de datos) | `js/datos.js` |
+| Nombre/ícono de la app instalada en el celular | `manifest.webmanifest`, `iconos/` |
+| Archivos que se guardan para uso sin conexión | `sw.js` (al agregar un archivo nuevo, sumarlo a la lista y subir la versión `altavista-v1` → `v2`) |
 
 ## Probar en el computador
 
